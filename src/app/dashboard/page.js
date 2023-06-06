@@ -1,11 +1,11 @@
 'use client'
 import Header from "@/components/Header"
+import Sidebar from "@/components/Sidebar"
 import { styled } from "styled-components"
 export default function Home() {
   return (<><Header/>
-  <Content>hsuahsa
-    saushuahsa
-    sausha
+  <Sidebar/>
+  <Content>
   </Content>
   </>)
 }

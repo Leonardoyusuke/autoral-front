@@ -1,3 +1,4 @@
+'use client'
 import { styled } from "styled-components"
 import { AiFillHome } from "react-icons/ai";
 import { FaGamepad, FaSearch, FaUserFriends, FaCoins } from "react-icons/fa"
@@ -21,7 +22,7 @@ export default function Header() {
             </Div1>
         </Div>
         <Div>
-            <HeaderLayout>
+            <HeaderLayout mid>
                 <AiFillHome />
                 <MdEmojiEvents />
                 <FaGamepad />
@@ -63,12 +64,12 @@ p{
 }
 `
 
-const Img = styled.img`
+export const Img = styled.img`
 border-radius: 20px;
-height:3.5vw;
-width: 3.5vw;
-margin-right: 4vw;
-margin-left: 7vw;
+height: ${props => props.side?"3vw":"3.5vw"} ;
+width: ${props => props.side?"3vw":"3.5vw"};
+margin-right: ${props => props.side?"1vw":"4vw"};
+margin-left: ${props => props.side?"1vw":"7vw"};
 `
 
 const Div1 = styled.div`
@@ -98,14 +99,14 @@ align-items: center;
 background-color:white;
 width: ${props => props.father ? "100vw" : "19vw"};
 height: ${props => props.father ? "5vw" : ""};
-box-shadow:${props => props.father ? "0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)" : ""} 
-
-;
+box-shadow:${props => props.father ? "0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)" : ""}; 
+z-index:4 ;
 `
 const HeaderLayout = styled.div`
 display: flex;
 justify-content: space-between;
 margin-right: ${props => props.right ? "-1vw" : ""};
+margin-left: ${props => props.mid? "-2.5vw":"" }  ;
 :hover{
         color:#1A73E3;
     }

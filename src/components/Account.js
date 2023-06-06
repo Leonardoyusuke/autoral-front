@@ -26,6 +26,7 @@ export default function Account() {
             console.log(log)
             localStorage.setItem("token", log.data.token)
             localStorage.setItem("img",log.data.checkEmail.pictureUrl)
+            localStorage.setItem("name",log.data.checkEmail.username)
             router.push('/dashboard')
             console.log(log.status)
         } catch (error) {
