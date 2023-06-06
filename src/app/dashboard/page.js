@@ -11,7 +11,7 @@ export default function Home() {
 }
 
 const Content = styled.div`
-background-color:#F1F2F5;
+background-color: #F1F2F5;
 width: 100vw;
 height: 100vw;
 margin-top: 5vw;

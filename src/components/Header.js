@@ -5,10 +5,12 @@ import { FaGamepad, FaSearch, FaUserFriends, FaCoins } from "react-icons/fa"
 import { MdEmojiEvents } from "react-icons/md"
 import { RiLogoutBoxLine } from "react-icons/ri"
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 
 
 export default function Header() {
+    const router = useRouter();
     const [searchText, setSearchText] = useState("")
     const [iconSearch, setIconSearch] = useState("")
     const imageSrc = localStorage.getItem('img');
@@ -23,7 +25,7 @@ export default function Header() {
         </Div>
         <Div>
             <HeaderLayout mid>
-                <AiFillHome />
+                <AiFillHome onClick={() => router.push('/dashboard')} />
                 <MdEmojiEvents />
                 <FaGamepad />
                 <FaUserFriends />

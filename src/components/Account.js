@@ -14,7 +14,6 @@ export default function Account() {
 
     function signUpEnvironment() {
         setLoginEnvironment(false)
-        console.log(loginEnvironment)
     }
 
     async function login(event) {
@@ -28,7 +27,6 @@ export default function Account() {
             localStorage.setItem("img",log.data.checkEmail.pictureUrl)
             localStorage.setItem("name",log.data.checkEmail.username)
             router.push('/dashboard')
-            console.log(log.status)
         } catch (error) {
             console.log(error)
         }
@@ -41,7 +39,6 @@ export default function Account() {
             localStorage.setItem("token", create.data)
             localStorage.setItem("Imagem",pictureUrl)
             router.push('/dashboard')
-            console.log(create)
 
         } catch (error) {
             console.log(error)
