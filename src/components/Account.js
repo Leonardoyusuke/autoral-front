@@ -48,7 +48,7 @@ export default function Account() {
     return (<>
         {loginEnvironment ? <>
             <Forms onSubmit={login}>
-                <Input username
+                <Input user
                     placeholder='   Email'
                     onChange={(e) => setEmail(e.target.value)}
                 />
@@ -116,7 +116,7 @@ p{
 }
 `
 export const Input = styled.input`
-margin-top: ${props => (props.username ? "3vw" : "1vw")};   
+margin-top: ${props => (props.user ? "3vw" : "1vw")};   
 height: 3vw;
 width: 20vw;
 border-radius: 5px;

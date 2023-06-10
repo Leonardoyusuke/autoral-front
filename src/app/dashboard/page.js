@@ -1,18 +1,26 @@
 'use client'
+import Feed from "@/components/Feed"
 import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
 import { styled } from "styled-components"
+import { useRouter } from 'next/navigation';
+
 export default function Home() {
+  const router = useRouter();
+  const token = localStorage.getItem('token');
+  if(!token) router.push('/')
+
   return (<><Header/>
   <Sidebar/>
   <Content>
+    <Feed/>
   </Content>
   </>)
 }
 
 const Content = styled.div`
-background-color: #F1F2F5;
-width: 100vw;
-height: 100vw;
+width: 40vw;
+height: 200vw;
 margin-top: 5vw;
+margin-left: 30vw;
 `
