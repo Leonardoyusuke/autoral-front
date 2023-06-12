@@ -19,7 +19,7 @@ top:5vw;
 export const ContainerGame = styled.div`
 position: fixed;
 top: 8vw;
-width: 48vw;
+width: 45vw;
 height: 40vw;
 margin-left: 28vw;
 

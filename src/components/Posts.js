@@ -33,7 +33,7 @@ export default function Post() {
         {f.description?f.description:""}
         </PostLayout>)
       ) : (
-        <div>No posts found.</div>
+        <div>Nenhum post ate o momento.</div>
       )}
     </PostEnvironment>
   );
@@ -56,11 +56,12 @@ h1{
     position: absolute;
     top: 1vw;
     left:7vw;
+    cursor: pointer;
 }
 p{
     position: absolute;
     top: 1vw;
-    left: 30vw;
+    left: 35vw;
 }
 `
 

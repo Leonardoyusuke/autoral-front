@@ -49,5 +49,6 @@ width: 28vw;
 height: 100vw;
 :hover{
     background-color: #E5E6E9;
-};
+}
+cursor: pointer;
 `

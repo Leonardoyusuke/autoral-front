@@ -4,6 +4,7 @@ import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
 import { styled } from "styled-components"
 import { useRouter } from 'next/navigation';
+import Ranking from "@/components/Ranking"
 
 export default function Home() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function Home() {
   <Sidebar/>
   <Content>
     <Feed/>
+  <Ranking/>
   </Content>
   </>)
 }

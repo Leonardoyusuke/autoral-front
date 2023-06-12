@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import GameEnvirolment from "@/components/GameEnvirolment";
 import { useRouter } from 'next/navigation';
+import Ranking from "@/components/Ranking";
 
 export default function Home(){
     const router = useRouter();
@@ -13,6 +14,7 @@ export default function Home(){
         <Header/>
         <Sidebar/>
         <GameEnvirolment></GameEnvirolment>
+        <Ranking/>
         </>
     )
 }
