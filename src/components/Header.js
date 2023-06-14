@@ -85,7 +85,7 @@ export default function Header() {
         </Div>
         <Div right>
             <HeaderLayout >
-                <Coins>
+                <Coins onClick={() => router.push('/coins')} >
                     <FaCoins coins />
                     <p>{coins}</p>
                 </Coins>

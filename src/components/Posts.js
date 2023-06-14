@@ -16,10 +16,8 @@ export default function Post() {
     const enviar = {headers:{Authorization:token}}
     try {
       const response = await axios.get("http://localhost:5003/feed",enviar);
-      console.log(response.data)
       setFeed(response.data);
     } catch (error) {
-      console.log(error);
     }
   }
 

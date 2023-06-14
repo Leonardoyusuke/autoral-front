@@ -21,7 +21,6 @@ export default function RankingFriends() {
         try {
             const response = await axios.get("http://localhost:5003/Ranking/friend", enviar);
             setRanking(response.data);
-            console.log(response)
         } catch (error) {
             console.log(error);
         }
@@ -77,6 +76,7 @@ grid-column-start:initial;
 justify-content: space-between;
 align-items:center;
 img{
+    margin-left: 0.5vw;
     width: 3vw;
     height: 3vw;
     border-radius: 20px;

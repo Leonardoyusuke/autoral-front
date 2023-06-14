@@ -20,9 +20,7 @@ export default function RankingGeral() {
         try {
             const response = await axios.get("http://localhost:5003/Ranking", enviar);
             setRanking(response.data);
-            console.log(ranking);
         } catch (error) {
-            console.log(error);
         }
     }
 
@@ -78,6 +76,7 @@ justify-content: space-between;
 align-items:center;
 img{
     width: 3vw;
+    margin-left: 0.5vw;
     height: 3vw;
     border-radius: 20px;
 }`
