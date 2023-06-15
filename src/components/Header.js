@@ -6,19 +6,22 @@ import { MdEmojiEvents } from "react-icons/md"
 import { RiLogoutBoxLine } from "react-icons/ri"
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CoinsContext from "@/context/userContext";
 import { useRouter } from 'next/navigation';
+import { useContext } from "react";
 
 
 export default function Header() {
     const router = useRouter();
-    const [coins, setCoins] = useState(0)
     const [search, setSearch] = useState("")
     const [searchResult, setSearchResult] = useState([])
     const [toggleResult, setToggleResult] = useState(false)
     const [iconSearch, setIconSearch] = useState("")
     const imageSrc = localStorage.getItem('img');
+    const { coins,setCoins } = useContext(CoinsContext)
 
     async function fetchData() {
+
         try {
             const token = localStorage.getItem('token');
             const enviar = { headers: { Authorization: token } }
@@ -42,8 +45,8 @@ export default function Header() {
         }
 
 
-        getCoins();
-    }, [search]);
+         getCoins();
+    }, [search,coins]);
 
     async function getCoins() {
         const token = localStorage.getItem('token');
@@ -66,9 +69,9 @@ export default function Header() {
                     debounceTimeout={300}
                     placeholder="            Pesquisar no FaceBet" />
 
-                {toggleResult? <SearchBarResult >
+                {toggleResult ? <SearchBarResult >
                     {searchResult.map((s) => <DivResult onClick={() => router.push(`/user/${s.id}`)}>
-                        <img  src={s.pictureUrl} />
+                        <img src={s.pictureUrl} />
                         <div > {s.username}</div>
                     </DivResult>)}
                 </SearchBarResult> : <></>}

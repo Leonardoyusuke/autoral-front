@@ -1,18 +1,22 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { styled } from "styled-components"
 import axios from "axios";
 import { FaCoins } from "react-icons/fa"
 import { useRouter } from 'next/navigation';
+import CoinsContext from "@/context/userContext";
+
 
 
 export default function RankingFriends() {
     const [ranking, setRanking] = useState([]);
     const router = useRouter();
+    const { coins } = useContext(CoinsContext)
+
 
     useEffect(() => {
         getRanking();
-    }, []);
+    }, [coins]);
 
     async function getRanking() {
         const token = localStorage.getItem('token');

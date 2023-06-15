@@ -1,10 +1,10 @@
 'use client'
-import Feed from "@/components/Feed"
+import Feed from "@/components/feed/Feed"
 import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
 import { styled } from "styled-components"
 import { useRouter } from 'next/navigation';
-import Ranking from "@/components/Ranking"
+import Ranking from "@/components/ranking/Ranking"
 
 export default function Home() {
   const router = useRouter();

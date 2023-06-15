@@ -120,6 +120,7 @@ export default function BlackJack() {
     const [stopCards, setStopCards] = useState(false)
     console.log(dealerValue)
 
+
     useEffect(() => {
         if (playerValue > 21 || dealerValue == 21) {
             setTimeout(() => {
@@ -185,13 +186,17 @@ export default function BlackJack() {
         setStopCards(true)
         setEnd(true)
         dealerGame()
+        
     }
     function dealerGame() {
-        if (dealerValue < playerValue) {
+        if (dealerValue > playerValue) {
+                console.log("aa")
+                clearInterval(condicao)
+            }else{
+                console.log(dealerValue,playerValue)
             const indice = Math.floor(Math.random() * baralho.length);
             const carta = baralho[indice];
             setShowDealerCard([...showDealerCard, carta.icon]);
-            console.log(showDealerCard)
             if (carta.value === "Jack" || carta.value === "Queen" || carta.value === "King") {
                 setDealerValue(prevDealerValue => prevDealerValue + 10);
             } else if (carta.value === "Ace") {
@@ -203,14 +208,47 @@ export default function BlackJack() {
                     setDealerHaveAce(true);
                 }
             } else {
-                setDealerValue(dealerValue + parseInt(carta.value));
+                setDealerValue(prevDealerValue => prevDealerValue + parseInt(carta.value));
+
             }
 
             baralho.splice(indice, 1);
-        } else if (dealerValue > playerValue) {
-            console.log("SSS")
-        }
+
+            if (playerValue > dealerValue){
+            setTimeout(() => {
+                dealerGame()
+            }, 2000);}
+            }
+
+    
     }
+
+
+        // if (dealerValue < playerValue) {
+        //     console.log(dealerValue,playerValue)
+        //     const indice = Math.floor(Math.random() * baralho.length);
+        //     const carta = baralho[indice];
+        //     setShowDealerCard([...showDealerCard, carta.icon]);
+        //     if (carta.value === "Jack" || carta.value === "Queen" || carta.value === "King") {
+        //         setDealerValue(prevDealerValue => prevDealerValue + 10);
+        //     } else if (carta.value === "Ace") {
+        //         if (dealerValue > 10) {
+        //             setDealerValue(prevDealerValue => prevDealerValue + 1);
+        //             setDealerHaveAce(true);
+        //         } else {
+        //             setDealerValue(prevDealerValue => prevDealerValue + 11);
+        //             setDealerHaveAce(true);
+        //         }
+        //     } else {
+        //         setDealerValue(dealerValue + parseInt(carta.value));
+        //     }
+
+        //     baralho.splice(indice, 1);
+
+        // } else if (dealerValue > playerValue) {
+        //     console.log("SSS")
+
+        // }
 
 
     function newGame() {

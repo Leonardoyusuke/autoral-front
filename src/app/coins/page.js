@@ -2,7 +2,7 @@
 import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
 import { styled } from "styled-components"
-import Ranking from "@/components/Ranking"
+import Ranking from "@/components/ranking/Ranking"
 import Coins from "@/components/Coins"
 export default function home() {
     return (<>

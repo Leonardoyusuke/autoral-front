@@ -2,7 +2,12 @@
 import { styled } from "styled-components"
 import axios from "axios";
 import { useState } from "react";
+import CoinsContext from "@/context/userContext";
+import { useContext } from "react";
+
 export default function Coins(){
+    const { coins, setCoins } = useContext(CoinsContext)
+    console.log(coins)
     const [cupom, setCupom] = useState("")
 
     async function freeCoins(){
@@ -10,7 +15,8 @@ export default function Coins(){
             const token = localStorage.getItem('token');
             const enviar = { headers: { Authorization: token } }
             const response = await axios.get("http://localhost:5003/users/freecoins", enviar);
-            alert(response.data)
+            setCoins(response.data.coins)
+            alert("Coins adicionadas")
         } catch (error) {
             alert(error.response.data)
         }
@@ -23,7 +29,8 @@ export default function Coins(){
             const enviar = { headers: { Authorization: token } }
             const payload = {cupom:cupom}
             const response = await axios.post("http://localhost:5003/users/cupom",payload ,enviar);
-            alert(response.data)
+            setCoins(response.data.coins)
+            alert("Coins adicionadas a sua conta")
 
         } catch (error) {
             if(error.message =="Request failed with status code 401"){

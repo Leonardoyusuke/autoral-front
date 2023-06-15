@@ -1,10 +1,11 @@
 'use client'
 import Account from '@/components/Account'
+import { CoinsProvider } from '@/context/userContext'
 import { useState } from 'react'
 import styled from 'styled-components'
 
 export default function LoginPage() {
-    return (
+    return (<>
         <Display><Layout>
             <Text>FaceBet<p>Conecte-se com seus amigos</p>
                 <p> do mundo todo enquanto aposta</p> </Text>
@@ -12,7 +13,7 @@ export default function LoginPage() {
         <Layout2>
         <Account></Account>
 </Layout2>
-        </Display>
+        </Display></>
     )
 }
 

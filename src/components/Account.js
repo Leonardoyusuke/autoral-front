@@ -1,9 +1,11 @@
 'use client'
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from "axios"
 import { useRouter } from 'next/navigation';
 import { styled } from "styled-components";
+import CoinsContext from "@/context/userContext";
 export default function Account() {
+    const { coins, setCoins } = useContext(CoinsContext)
     const router = useRouter();
     const [loginEnvironment, setLoginEnvironment] = useState(true)
     const [email, setEmail] = useState("")
@@ -22,7 +24,7 @@ export default function Account() {
         try {
             console.log(payload)
             const log = await axios.post("http://localhost:5003" + "/users/signin", payload)
-            console.log(log)
+            setCoins(log.data.checkEmail.coins)
             localStorage.setItem("token", log.data.token)
             localStorage.setItem("img",log.data.checkEmail.pictureUrl)
             localStorage.setItem("name",log.data.checkEmail.username)

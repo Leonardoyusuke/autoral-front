@@ -21,7 +21,7 @@ export default function Sidebar(){
             <SideDiv ><MdEmojiEvents/>torneios</SideDiv>           
             <SideDiv><FaHistory/>historico</SideDiv>
             <SideDiv><GiPodium/>Ranking</SideDiv>
-            <SideDiv onClick={() => router.push('/blackjack')} ><CgCardSpades/>Black Jack</SideDiv>
+            <SideDiv onClick={() => router.push('/games/blackjack')} ><CgCardSpades/>Black Jack</SideDiv>
             <SideDiv><GiGibbet/>Jogo da Forca</SideDiv>
             <SideDiv><GiCardPick/>Jogo da memoria</SideDiv>
 
