@@ -1,5 +1,5 @@
 'use client'
-import BlackJack from "@/components/games/BlackJack";
+import BlackJack from "@/components/games/blackjack/BlackJack";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { styled } from "styled-components"

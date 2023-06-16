@@ -1,11 +1,12 @@
 'use client'
-import BlackJack from "@/components/games/BlackJack";
+import BlackJack from "@/components/games/blackjack/BlackJack";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { styled } from "styled-components"
 
 import { useRouter } from 'next/navigation';
 import Ranking from "@/components/ranking/Ranking";
+import Forca from "@/components/games/forca/Forca";
 
 export default function Home() {
     const router = useRouter();
@@ -16,7 +17,7 @@ export default function Home() {
     return (<>
         <Header></Header><Ranking></Ranking><Sidebar></Sidebar>
         <GameTitle> Jogo da forca</GameTitle>
-        <ContainerGame><></>
+        <ContainerGame><Forca></Forca>
         </ContainerGame>
 
     </>
