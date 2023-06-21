@@ -23,7 +23,7 @@ export default function RankingFriends() {
         const enviar = { headers: { Authorization: token } };
 
         try {
-            const response = await axios.get("http://localhost:5003/Ranking/friend", enviar);
+            const response = await axios.get("http://localhost:5004/Ranking/friend", enviar);
             setRanking(response.data);
         } catch (error) {
             console.log(error);

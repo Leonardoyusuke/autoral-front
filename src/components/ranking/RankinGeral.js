@@ -21,8 +21,9 @@ export default function RankingGeral() {
         const enviar = { headers: { Authorization: token } };
 
         try {
-            const response = await axios.get("http://localhost:5003/Ranking", enviar);
+            const response = await axios.get("http://localhost:5004/Ranking", enviar);
             setRanking(response.data);
+
         } catch (error) {
         }
     }

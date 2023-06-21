@@ -26,7 +26,7 @@ export default function Header() {
             const token = localStorage.getItem('token');
             const enviar = { headers: { Authorization: token } }
             const payload = { search: search }
-            const response = await axios.post("http://localhost:5003/users/search", payload, enviar);
+            const response = await axios.post("http://localhost:5004/users/search", payload, enviar);
             setToggleResult(true)
             setSearchResult(response.data)
         } catch (error) {
@@ -52,7 +52,7 @@ export default function Header() {
         const token = localStorage.getItem('token');
         const enviar = { headers: { Authorization: token } }
         try {
-            const response = await axios.get("http://localhost:5003/users/coins", enviar);
+            const response = await axios.get("http://localhost:5004/users/coins", enviar);
             setCoins(response.data.coins)
         } catch (error) {
             console.log(error);

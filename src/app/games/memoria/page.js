@@ -38,6 +38,5 @@ top: 8vw;
 width: 45vw;
 height: 40vw;
 margin-left: 28vw;
-background-color: green;
 
 `

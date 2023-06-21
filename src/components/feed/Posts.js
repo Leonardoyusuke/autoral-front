@@ -15,7 +15,7 @@ export default function Post() {
     const token = localStorage.getItem('token');
     const enviar = {headers:{Authorization:token}}
     try {
-      const response = await axios.get("http://localhost:5003/feed",enviar);
+      const response = await axios.get("http://localhost:5004/feed",enviar);
       setFeed(response.data);
     } catch (error) {
     }
@@ -27,7 +27,7 @@ export default function Post() {
         feed.map((f) => <PostLayout key={f.id}>
         <img src={f.users.pictureUrl}/>
         <h1>{f.users.username}</h1>
-        <p><FaCoins/> {f.users.coins}</p>
+        <p><FaCoins/>   {f.users.coins}</p>
         {f.description?f.description:""}
         </PostLayout>)
       ) : (
@@ -59,7 +59,10 @@ h1{
 p{
     position: absolute;
     top: 1vw;
-    left: 35vw;
+    left: 33vw;
+    display: flex;
+}svg{
+  margin-right: 1vw;
 }
 `
 
