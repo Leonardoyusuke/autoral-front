@@ -3,7 +3,7 @@ import { styled } from "styled-components"
 import { Img } from "./Header";
 import { MdEmojiEvents } from "react-icons/md"
 import {FaHistory} from "react-icons/fa"
-import { GiPodium,GiGibbet,GiCardPick} from "react-icons/gi"
+import { GiPodium,GiGibbet,GiMineExplosion} from "react-icons/gi"
 import {CgCardSpades} from "react-icons/cg"
 import { useRouter } from 'next/navigation';
 
@@ -20,10 +20,9 @@ export default function Sidebar(){
             <SideDiv first><Img side src={imageSrc} />  {username} </SideDiv>
             <SideDiv ><MdEmojiEvents/>torneios</SideDiv>           
             <SideDiv><FaHistory/>historico</SideDiv>
-            <SideDiv><GiPodium/>Ranking</SideDiv>
+            <SideDiv onClick={() => router.push('/ranking')} ><GiPodium/>Ranking</SideDiv>
             <SideDiv onClick={() => router.push('/games/blackjack')} ><CgCardSpades/>Black Jack</SideDiv>
-            <SideDiv><GiGibbet/>Jogo da Forca</SideDiv>
-            <SideDiv><GiCardPick/>Jogo da memoria</SideDiv>
+            <SideDiv onClick={() => router.push('/games/mines')}><GiMineExplosion/>Campo Minado</SideDiv>
 
         </Side>
     )

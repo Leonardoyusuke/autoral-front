@@ -13,6 +13,7 @@ export default function Ranking(){
 
 const RankingLayout = styled.div`
 position: fixed;
+z-index: 2;
 right: 0vw;
 top: 6vw;
 width: 25vw;

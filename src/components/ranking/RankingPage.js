@@ -1,51 +1,43 @@
 'use client'
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { styled } from "styled-components"
 import axios from "axios";
 import { useRouter } from 'next/navigation';
-import CoinsContext from "@/context/userContext";
 import { FaCoins } from "react-icons/fa"
 
-export default function RankingGeral() {
-    const router = useRouter();
-    const [ranking, setRanking] = useState([]);
-    const { coins } = useContext(CoinsContext)
 
+export default function RankingPage() {
+    const [ranking, setRanking] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
-        getRanking();
-    }, [coins]);
+        getRanking()
+    }, []);
 
     async function getRanking() {
         const token = localStorage.getItem('token');
         const enviar = { headers: { Authorization: token } };
-
         try {
-            const response = await axios.get("http://localhost:5004/Ranking", enviar);
+            const response = await axios.get("http://localhost:5004/Ranking/page", enviar);
+            console.log(response)
             setRanking(response.data);
 
         } catch (error) {
         }
     }
-
-    return (
-        <Layout>
-            <text>Ranking Geral</text>
-            {ranking.length > 0 ? (
-                ranking.map((r) => (
-                    <RankingLayout onClick={() => router.push(`/user/${r.id}`)} key={r.id}>
-                        <Div  user>
-                            <img src={r.pictureUrl} />
-                            <div>{r.username}</div>
-                        </Div>
-                        <Div><FaCoins/>{r.coins}</Div>
-                    </RankingLayout>
-                ))
-            ) : (
-                ""
-            )}
-        </Layout>
-    );
+    return (<> {ranking.length > 0 ? (
+        ranking.map((r) => (
+            <RankingLayout onClick={() => router.push(`/user/${r.id}`)} key={r.id}>
+                <Div  user>
+                    <img src={r.pictureUrl} />
+                    <div>{r.username}</div>
+                </Div>
+                <Div><FaCoins/>{r.coins}</Div>
+            </RankingLayout>
+        ))
+    ) : (
+        ""
+    )}</>)
 }
 
 const Div = styled.div`

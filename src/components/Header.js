@@ -58,7 +58,10 @@ export default function Header() {
             console.log(error);
         }
     }
-
+    function logout(){
+        localStorage.clear
+        router.push('/')
+    }
 
     return (<Div father>
         <Div >LOGO
@@ -93,7 +96,7 @@ export default function Header() {
                     <p>{coins}</p>
                 </Coins>
                 <Img src={imageSrc} />
-                <RiLogoutBoxLine logout />
+                <RiLogoutBoxLine onClick={logout} logout />
             </HeaderLayout>
         </Div>
 
