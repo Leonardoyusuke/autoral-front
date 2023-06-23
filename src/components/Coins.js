@@ -14,7 +14,7 @@ export default function Coins(){
         try {
             const token = localStorage.getItem('token');
             const enviar = { headers: { Authorization: token } }
-            const response = await axios.get("http://localhost:5004/users/freecoins", enviar);
+            const response = await axios.get(process.env.NEXT_PUBLIC_REACT_APP_API_URL + "/users/freecoins", enviar);
             setCoins(response.data.coins)
             alert("Coins adicionadas")
         } catch (error) {
@@ -28,7 +28,7 @@ export default function Coins(){
             const token = localStorage.getItem('token');
             const enviar = { headers: { Authorization: token } }
             const payload = {cupom:cupom}
-            const response = await axios.post("http://localhost:5004/users/cupom",payload ,enviar);
+            const response = await axios.post(process.env.NEXT_PUBLIC_REACT_APP_API_URL + "/users/cupom",payload ,enviar);
             setCoins(response.data.coins)
             alert("Coins adicionadas a sua conta")
 

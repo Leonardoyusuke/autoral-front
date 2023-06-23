@@ -23,7 +23,7 @@ export default function Account() {
         const payload = { email, password }
         try {
             console.log(payload)
-            const log = await axios.post("http://localhost:5004" + "/users/signin", payload)
+            const log = await axios.post(process.env.NEXT_PUBLIC_REACT_APP_API_URL + "/users/signin", payload)
             setCoins(log.data.checkEmail.coins)
             localStorage.setItem("token", log.data.token)
             localStorage.setItem("img",log.data.checkEmail.pictureUrl)
@@ -37,7 +37,7 @@ export default function Account() {
         event.preventDefault()
         const payload = { username, email, password, pictureUrl }
         try {
-            const create = await axios.post("http://localhost:5004" + "/users/signup", payload)
+            const create = await axios.post(process.env.NEXT_PUBLIC_REACT_APP_API_URL + "/users/signup", payload)
             localStorage.setItem("token", create.data)
             localStorage.setItem("Imagem",pictureUrl)
             router.push('/dashboard')

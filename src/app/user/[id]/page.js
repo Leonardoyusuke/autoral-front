@@ -12,30 +12,64 @@ export default function page({ params }) {
     const [name, setName] = useState("")
     const [img, setImg] = useState("")
     const [date, setDate] = useState("")
+    const [following, setFollowing] = useState(false)
+    const [reload, setReload] = useState(false)
 
 
     const [coins, setCoins] = useState(0)
     useEffect(() => {
         profile();
-    }, []);
+        getFollows()
+    }, [reload]);
 
-    async function profile() {
-        const token = localStorage.getItem('token');
-        const enviar = { headers: { Authorization: token } };
+    const token = localStorage.getItem('token');
+    const enviar = { headers: { Authorization: token } };
+
+    async function getFollows(){
         const id = params.id
         const payload = { profileId: id }
         try {
-            const response = await axios.post("http://localhost:5004/" + "users/profile", payload, enviar);
-            console.log(response.data.bet)
+            const response = await axios.post(process.env.NEXT_PUBLIC_REACT_APP_API_URL + "/follow", payload, enviar);
+            setFollowing(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    async function profile() {
+        const id = params.id
+        const payload = { profileId: id }
+        try {
+            const response = await axios.post(process.env.NEXT_PUBLIC_REACT_APP_API_URL + "/users/profile", payload, enviar);
             setFeed(response.data.bet);
             setName(response.data.username)
             setImg(response.data.pictureUrl)
             setCoins(response.data.coins)
             setDate(response.data.date)
         } catch (error) {
-
+            console.log(error)
         }
     }
+    async function unfollow(){
+        const id = params.id
+        try {
+            const response = await axios.delete(process.env.NEXT_PUBLIC_REACT_APP_API_URL + `/follow/${id}`,enviar);
+            setReload(!reload)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    async function follow(){
+        const id = params.id
+        try {
+            const response = await axios.get(process.env.NEXT_PUBLIC_REACT_APP_API_URL + `/follow/${id}`,enviar);
+            setReload(!reload)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
 
 
     return (<>
@@ -47,7 +81,10 @@ export default function page({ params }) {
                 <img src={img} />
                 <p> Historico de {name} 
                 </p>
-                <div><FaCoins/> {coins}</div> 
+                <div><FaCoins/> {coins}</div>
+                {following?<button onClick={unfollow} >Parar de seguir</button>: <button onClick={follow}>seguir</button>}
+               
+
             </ProfileHeader>
 
             {feed.length ? (
@@ -71,6 +108,7 @@ display: flex;
 position: relative;
 align-items: center;
 margin-top: 2vw;
+height: 10vw;
 p{
     font-size: 2vw;
     margin-left: 2vw;
@@ -84,6 +122,16 @@ img{
     right: 26vw;
     margin-left: 4vw;
     font-size: 2vw;
+}button{
+    position: absolute;
+    right: 30vw;
+    margin-top: 8vw;
+    background-color: green;
+    width: 6vw;
+    height: 3vw;
+    border-radius: 12px;
+    z-index: 2;
+
 }
 `
 const Text = styled.text`

@@ -171,7 +171,7 @@ async function serverComunication(win){
     const enviar = { headers: { Authorization: token } };
     const payload = { gameId: 1, coins: betAmount, odds: 2, win };
     console.log(payload);
-    const response =await axios.post('http://localhost:5004/bet', payload, enviar);
+    const response =await axios.post(process.env.NEXT_PUBLIC_REACT_APP_API_URL + '/bet', payload, enviar);
     setCoins(response.data.coins)
     console.log(response, '2');
   } catch (error) {

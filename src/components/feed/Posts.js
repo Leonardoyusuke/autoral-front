@@ -15,7 +15,7 @@ export default function Post() {
     const token = localStorage.getItem('token');
     const enviar = {headers:{Authorization:token}}
     try {
-      const response = await axios.get("http://localhost:5004/feed",enviar);
+      const response = await axios.get(process.env.NEXT_PUBLIC_REACT_APP_API_URL + "/feed",enviar);
       setFeed(response.data);
     } catch (error) {
     }
