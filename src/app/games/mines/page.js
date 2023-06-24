@@ -11,7 +11,7 @@ export default function Home() {
 
     return (<>
         <Header></Header><Ranking></Ranking><Sidebar></Sidebar>
-        <GameTitle> Mines</GameTitle>
+        <GameTitle> Mines (5 bombas)</GameTitle>
         <ContainerGame>
             <Mines></Mines>
         </ContainerGame>
@@ -21,7 +21,7 @@ export default function Home() {
 }
 export const GameTitle = styled.div`
 display: flex;
-left: 43vw;
+left: 42vw;
 font-size: 2vw;
 position: fixed;
 top:5.5vw;

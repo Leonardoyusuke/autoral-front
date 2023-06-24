@@ -42,6 +42,7 @@ export default function page({ params }) {
         const payload = { profileId: id }
         try {
             const response = await axios.post(process.env.NEXT_PUBLIC_REACT_APP_API_URL + "/users/profile", payload, enviar);
+            console.log(response)
             setFeed(response.data.bet);
             setName(response.data.username)
             setImg(response.data.pictureUrl)
@@ -92,7 +93,7 @@ export default function page({ params }) {
                     <Profile style={{ backgroundColor: f.win ? 'rgba(0, 255, 0, 0.5)' : 'rgba(255, 0, 0, 0.5)' }}key={index}>
                         <img src={img} />
 
-                        <p>{name} {f.win==true?"ganhou":"perdeu"} uma aposta no valor de  {f.coins} <FaCoins/> com uma Odds de {f.odds} no jogo {f.gameId == 1 ? "Blackjack" : "outro"} </p>
+                        <p>{name} {f.win==true?"ganhou":"perdeu"} uma aposta no valor de  {f.coins} <FaCoins/> com uma Odds de {f.odds} no jogo {f.gameId == 1 ? "Blackjack" : "Campo minado"} </p>
                     </Profile>
                 ))
             ) : (
