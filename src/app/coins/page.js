@@ -8,7 +8,7 @@ export default function home() {
     return (<>
         <Header />
         <Sidebar />
-        <Content><Coins/></Content>
+        <Content><Coins/> </Content>
         <Ranking />
        
     </>)
